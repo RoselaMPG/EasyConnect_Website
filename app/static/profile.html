@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #1a1a1a;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-logo a {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-button {
+            background-color: #47d1ff;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .header-button.outline {
+            background-color: transparent;
+            border: 2px solid #47d1ff;
+            color: #47d1ff;
+        }
+
+        .header-button:hover {
+            background-color: #2367f0;
+        }
+
+        .container {
+            padding: 40px;
+        }
+
+        .card {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .profile-avatar {
+            width: 60px;
+            height: 60px;
+            background-color: #47d1ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        p {
+            font-size: 16px;
+            color: #cccccc;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-logo"><a href="/">EasyConnect</a></div>
+        <nav class="header-nav">
+            <a href="/dashboard" class="header-button outline">Dashboard</a>
+            <a href="/profile" class="header-button">Profile</a>
+            <a href="/logout" class="header-button outline">Logout</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="card profile-header">
+            <div class="profile-avatar">
+                <span id="userInitials">U</span>
+            </div>
+            <div>
+                <h1 id="userName">User Name</h1>
+                <p id="userEmail">user@example.com</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchUserProfile();
+        });
+
+        function fetchUserProfile() {
+            fetch('/api/user/profile')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        console.error(data.error);
+                        return;
+                    }
+                    document.getElementById('userName').textContent = data.name;
+                    document.getElementById('userEmail').textContent = data.email;
+                    document.getElementById('userInitials').textContent = data.name.charAt(0).toUpperCase();
+                })
+                .catch(error => console.error('Error fetching user profile:', error));
+        }
+    </script>
+</body>
+</html>

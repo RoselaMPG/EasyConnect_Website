@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sign Up Page</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #1a1a1a;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-logo a {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-button {
+            background-color: #47d1ff;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .header-button.outline {
+            background-color: transparent;
+            border: 2px solid #47d1ff;
+            color: #47d1ff;
+        }
+
+        .header-button:hover {
+            background-color: #2367f0;
+        }
+
+        .container {
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+        }
+
+        .auth-container {
+            background-color: #1a1a1a;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            background-color: #333;
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background-color: #47d1ff;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: #2367f0;
+        }
+
+        a {
+            color: #47d1ff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-logo"><a href="/">EasyConnect</a></div>
+        <nav class="header-nav">
+            <a href="/login" class="header-button outline">Log In</a>
+            <a href="/signup" class="header-button">Sign Up</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="auth-container">
+            <h2>Sign Up</h2>
+            <form action="/signup" method="POST">
+                <div class="form-group">
+                    <input type="text" id="name" name="name" required placeholder="Name" />
+                </div>
+                <div class="form-group">
+                    <input type="text" id="email" name="email" required placeholder="Email" />
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" name="password" required placeholder="Password" />
+                </div>
+                <div class="form-group">
+                    <select id="userRole" name="userRole" required>
+                        <option value="" disabled selected>Select Role</option>
+                        <option value="attendee">Attendee</option>
+                        <option value="host">Host</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary">Sign Up</button>
+                <p>
+                    Already have an account?
+                    <a href="/login" id="login">Log in</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
