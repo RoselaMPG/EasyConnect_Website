@@ -1,8 +1,14 @@
+# Ignore virtual environments
+venv/
+.venv/
+
+# Ignore environment variables
 .env
-*.venv*
+
+# Ignore Python bytecode
+__pycache__/
+*.pyc
+
+# Ignore data folder except .gitkeep
 /data/*
 !/data/.gitkeep
-app/__pycache__/main.cpython-39.pyc
-app/__pycache__/database.cpython-39.pyc
-*.pyc
-*.pyc
