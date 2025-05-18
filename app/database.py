@@ -144,7 +144,7 @@ def setup_database(drop_existing=False, create_sample_data=True):
         """)
         logger.info("Pressure table created or verified")
 
-        # Add other sensor tables if needed (humidity, light) here
+       
 
         connection.commit()
     except Error as e:
